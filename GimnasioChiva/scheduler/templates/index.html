@@ -35,7 +35,7 @@
     <header class="header-section">
         <div class="container-fluid">
             <div class="logo">
-                <a href={% static './index.html' %}>
+                <a href={% url 'index' %}>
                     <img src={% static 'scheduler/img/logo.png' %} alt="">
                 </a>
             </div>
@@ -50,17 +50,17 @@
                 <div class="nav-menu">
                     <nav class="mainmenu mobile-menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./about-us.html">About us</a></li>
-                            <li><a href="./schedule.html">Schedule</a></li>
-                            <li><a href="./gallery.html">Gallery</a></li>
+                            <li class="active"><a href={% url 'index' %}>Home</a></li>
+                            <li><a href={% url 'about_us' %}>Sobre Nosotros</a></li>
+                            <li><a href={% url 'schedule' %}>Calendario</a></li>
+                            <li><a href={% url 'gallery' %}>Galería</a></li>
                             <!-- <li><a href="./blog.html">Blog</a> 
                                 <ul class="dropdown">
                                     <li><a href="./about-us.html">About Us</a></li>
                                     <li><a href="./blog-single.html">Blog Details</a></li>
                                 </ul>
                             </li>-->
-                            <li><a href="./login.html">Login</a></li>>
+                            <li><a href={% url 'login' %}>Login</a></li>>
                         </ul>
                     </nav>
                 </div>

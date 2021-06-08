@@ -7,8 +7,10 @@ from . import views
 
 # Incluir patrones y los urls del scheduler
 urlpatterns = [
-    path('', views.index, name="index"),
-    path('index.html', views.index, name="index"),
-    path('login.html', views.login, name="login"),
-    path('schedule.html', views.schedule, name="schedule"),
+    path('',views.home, name='home'),
+    path('home/', views.index, name="index"),
+    path('login/', views.login, name="login"),
+    path('schedule/', views.schedule, name="schedule"),
+    path('nosotros/', views.about_us, name="about_us"),
+    path('gallery/', views.gallery, name="gallery"),
 ]

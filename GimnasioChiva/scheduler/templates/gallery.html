@@ -1,5 +1,4 @@
 {% load static %}
-{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -9,11 +8,7 @@
     <meta name="keywords" content="Activitar, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {% if login == 'false' %}
-        <title> Gimnasio IE0724 | Login </title>
-    {% else %} 
-        <title> Gimnasio IE0724 | Logout </title>
-    {% endif %}
+    <title> Gimnasio IE0724 | Galería </title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700,800,900&display=swap" rel="stylesheet">
@@ -58,18 +53,14 @@
                             <li><a href={% url 'index' %}>Home</a></li>
                             <li><a href={% url 'about_us' %}>Sobre Nosotros</a></li>
                             <li><a href={% url 'schedule' %}>Calendario</a></li>
-                            <li><a href={% url 'gallery' %}>Galería</a></li>
+                            <li class="active"><a href={% url 'gallery' %}>Galería</a></li>
                             <!-- <li><a href="./blog.html">Blog</a> 
                                 <ul class="dropdown">
                                     <li><a href="./about-us.html">About Us</a></li>
                                     <li><a href="./blog-single.html">Blog Details</a></li>
                                 </ul>
                             </li>-->
-                            {% if login == 'false' %}
-                                <li class="active"><a href={% url 'login' %}>Login</a></li>
-                            {% else %}
-                                <li class="active"><a href={% url 'login' %}>Logout</a></li>
-                            {% endif %}
+                            <li><a href={% url 'login' %}>Login</a></li>>
                         </ul>
                     </nav>
                 </div>
@@ -79,67 +70,157 @@
     </header>
     <!-- Header End -->
 
-    <!-- Map Section Begin 
-    <div class="contact-map">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d188618.51311104256!2d-71.236572!3d42.381647!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1576756626784!5m2!1sen!2sbd"
-            height="530" style="border: 0" allowfullscreen=""></iframe>
-        <div class="map-hover">
-            <h5>New York</h5>
-            <ul>
-                <li>Weekdays: 10.00 - 23.00</li>
-                <li>Saturday: 10.00 - 23.00</li>
-                <li>Sunday: Close</li>
-            </ul>
-            <i class="icon_pin"></i>
-        </div>
-    </div>
-    <!-- Map Section End -->
-
-    <!-- Contact Section Begin -->
-    <section class="contact-section spad">
+    <!-- Breadcrumb Section Begin 
+    <section class="breadcrumb-section set-bg spad" data-setbg="img/about-bread.jpg">
         <div class="container">
             <div class="row">
-                <!--<div class="col-lg-3">
-                    <div class="contact-info">
-                        <h4>Information</h4>
-                        <ul>
-                            <li><i class="fa fa-phone"></i>(12)-100-100-100</li>
-                            <li><i class="fa fa-envelope"></i>Info.colorlib@gmail.com</li>
-                        </ul>
-                    </div>
-                    <div class="contact-address">
-                        <h4>Address</h4>
-                        <ul>
-                            <li><i class="fa fa-map-marker"></i> Iris Watson, Mary land, United State., New York City
-                            </li>
-                        </ul>
-                    </div>
-                </div>-->
-                <div class="col-lg-8 offset-lg-1">
-                    <div class="contact-form">
-                        <h4>Login</h4>
-                        <form action="{% url 'login' %}" method="POST">
-                            {% csrf_token %}
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <input type="text" name="user" placeholder="Usuario">
-                                </div>
-                                <div class="col-lg-6">
-                                    <input type="text" name="password" placeholder="Clave">
-                                </div>
-                                <div class="col-lg-12">
-                                    <!--<textarea placeholder="Message"></textarea>-->
-                                    <button type="submit" class="c-btn">Login</button>
-                                </div>
-                            </div>
-                        </form>
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <h2>Our Gallery</h2>
+                        <div class="breadcrumb-controls">
+                            <a href="#"><i class="fa fa-home"></i> Home</a>
+                            <span>Gallery</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Contact Section End -->
+    <!-- Breadcrumb End -->
+
+    <!-- Gallery Section Begin -->
+    <section class="gallery-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="gallery-controls">
+                        <ul>
+                            <li class="active" data-filter="*">TODOS</li>
+                            <li data-filter=".crossfit">Crossfit</li>
+                            <li data-filter=".workout">Fitness</li>
+                            <li data-filter=".gym">Gimnasio</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row gallery-filter">
+                <div class="col-lg-4 col-sm-6 mix crossfit workout">
+                    <div class="gallery-item">
+                        <img src={% static 'scheduler/img/gallery/gallery-1.jpg' %} alt="">
+                        <div class="gi-hover-warp">
+                            <div class="gi-hover">
+                                <a href={% static 'scheduler/img/gallery/gallery-1.jpg' %} class="image-popup"><i class="fa fa-search-plus"></i></a>
+                                <!--<a href="#"><i class="fa fa-chain"></i></a>
+                                <h6>Pruebe un ejercicio con pesas<span>Run, Walk, Swimming</span></h6>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mix workout gym">
+                    <div class="gallery-item">
+                        <img src={% static 'scheduler/img/gallery/gallery-2.jpg' %} alt="">
+                        <div class="gi-hover-warp">
+                            <div class="gi-hover">
+                                <a href={% static 'scheduler/img/gallery/gallery-2.jpg' %} class="image-popup"><i class="fa fa-search-plus"></i></a>
+                                <!--<a href="#"><i class="fa fa-chain"></i></a>
+                                <h6>Time to Try a Bodyweight Workout <span>Run, Walk, Swimming</span></h6>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mix workout">
+                    <div class="gallery-item">
+                        <img src={% static 'scheduler/img/gallery/gallery-3.jpg' %} alt="">
+                        <div class="gi-hover-warp">
+                            <div class="gi-hover">
+                                <a href={% static 'scheduler/img/gallery/gallery-3.jpg' %}  class="image-popup"><i class="fa fa-search-plus"></i></a>
+                                <!--<a href="#"><i class="fa fa-chain"></i></a>
+                                <h6>Time to Try a Bodyweight Workout <span>Run, Walk, Swimming</span></h6>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mix gym">
+                    <div class="gallery-item">
+                        <img src={% static 'scheduler/img/gallery/gallery-4.jpg' %}  alt="">
+                        <div class="gi-hover-warp">
+                            <div class="gi-hover">
+                                <a href={% static 'scheduler/img/gallery/gallery-4.jpg' %}  class="image-popup"><i
+                                        class="fa fa-search-plus"></i></a>
+                                <!--<a href="#"><i class="fa fa-chain"></i></a>
+                                <h6>Time to Try a Bodyweight Workout <span>Run, Walk, Swimming</span></h6>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mix crossfit">
+                    <div class="gallery-item">
+                        <img src={% static 'scheduler/img/gallery/gallery-5.jpg' %} alt="">
+                        <div class="gi-hover-warp">
+                            <div class="gi-hover">
+                                <a href={% static 'scheduler/img/gallery/gallery-5.jpg' %} class="image-popup"><i class="fa fa-search-plus"></i></a>
+                                <!--<a href="#"><i class="fa fa-chain"></i></a>
+                                <h6>Time to Try a Bodyweight Workout <span>Run, Walk, Swimming</span></h6>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mix gym crossfit">
+                    <div class="gallery-item">
+                        <img src={% static 'scheduler/img/gallery/gallery-6.jpg' %} alt="">
+                        <div class="gi-hover-warp">
+                            <div class="gi-hover">
+                                <a href={% static 'scheduler/img/gallery/gallery-6.jpg' %} class="image-popup"><i
+                                        class="fa fa-search-plus"></i></a>
+                                <!--<a href="#"><i class="fa fa-chain"></i></a>
+                                <h6>Time to Try a Bodyweight Workout <span>Run, Walk, Swimming</span></h6>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mix workout">
+                    <div class="gallery-item">
+                        <img src={% static 'scheduler/img/gallery/gallery-7.jpg' %} alt="">
+                        <div class="gi-hover-warp">
+                            <div class="gi-hover">
+                                <a href={% static 'scheduler/img/gallery/gallery-7.jpg' %} class="image-popup"><i
+                                        class="fa fa-search-plus"></i></a>
+                                <!--<a href="#"><i class="fa fa-chain"></i></a>
+                                <h6>Time to Try a Bodyweight Workout <span>Run, Walk, Swimming</span></h6>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mix crossfit gym">
+                    <div class="gallery-item">
+                        <img src={% static 'scheduler/img/gallery/gallery-8.jpg' %} alt="">
+                        <div class="gi-hover-warp">
+                            <div class="gi-hover">
+                                <a href={% static 'scheduler/img/gallery/gallery-8.jpg' %} class="image-popup"><i
+                                        class="fa fa-search-plus"></i></a>
+                                <!--<a href="#"><i class="fa fa-chain"></i></a>
+                                <h6>Time to Try a Bodyweight Workout <span>Run, Walk, Swimming</span></h6>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 mix crossfit gym workout">
+                    <div class="gallery-item">
+                        <img src={% static 'scheduler/img/gallery/gallery-9.jpg' %} alt="">
+                        <div class="gi-hover-warp">
+                            <div class="gi-hover">
+                                <a href={% static 'scheduler/img/gallery/gallery-9.jpg' %} class="image-popup"><i
+                                        class="fa fa-search-plus"></i></a>
+                                <!--<a href="#"><i class="fa fa-chain"></i></a>
+                                <h6>Time to Try a Bodyweight Workout <span>Run, Walk, Swimming</span></h6>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Gallery Section End -->
 
     <!-- Cta Section Begin 
     <section class="cta-section">
