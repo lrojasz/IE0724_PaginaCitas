@@ -5,5 +5,11 @@ def index(request):
     return render(request,'index.html',{})
 
 # Página de "contactarnos"
-def contact(request):
-    return render(request,'contact.html',{})
+def login(request):
+    return render(request,'login.html',{})
+
+# Página de nueva cita
+def schedule(request):
+    return render(request,'schedule.html',{})
+
+    

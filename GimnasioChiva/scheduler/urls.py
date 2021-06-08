@@ -8,5 +8,7 @@ from . import views
 # Incluir patrones y los urls del scheduler
 urlpatterns = [
     path('', views.index, name="index"),
-    path('contact.html', views.contact, name="contact"),
+    path('index.html', views.index, name="index"),
+    path('login.html', views.login, name="login"),
+    path('schedule.html', views.schedule, name="schedule"),
 ]
