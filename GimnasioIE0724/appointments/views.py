@@ -85,31 +85,12 @@ class AppointmentsDelete(LoginRequiredMixin, DeleteView):
 
 
 """
-FRONTEND STUFF!!!!! - Comment later
+Páginas necesarias para el frontend:
 """
-
 
 # Página principal
 def index(request):
     return render(request,'webpage/index.html',{})
-
-# Redirigir página de home
-"""def home(request):
-    return redirect('home/')"""
-
-# Página de "contactarnos"
-"""
-def login(request,login='false'):
-    login = 'false'
-    if request.method == "POST":
-        #do stuff
-        user = request.POST['user']
-        password = request.POST['password']
-        login = 'true'
-        # pass in variables
-        return render(request,'login.html',{'login':login})
-    else:
-        return render(request,'login.html',{'login':login})"""
 
 # Página de nueva cita
 def calendar(request):
