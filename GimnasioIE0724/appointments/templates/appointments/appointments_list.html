@@ -131,7 +131,10 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>CITA: Día / Mes / Hora</th>
+                            {%if request.user.is_staff%}
+                            <th>Usuario</th>
+                            {% endif %}
+                            <th>Día / Mes / Hora</th>
                             <th>Detalles</th>
                             <th>Editar Cita</th>
                             <th>Eliminar Cita</th>
@@ -140,6 +143,9 @@
                     <tbody>
                         {% for appointment in appointments %}
                         <tr>
+                            {%if request.user.is_staff%}
+                            <td class="workout-time"><a>{{appointment.user}}</a></td>
+                            {% endif %}
                             <td class="workout-time"><a>{{appointment.day}}/{{appointment.month}}/{{appointment.hour}}</a></td>
                             <td class="hover-bg ts-item"><a href="{% url 'appointment' appointment.id %}">Ver Detalle</a></td>
                             <!-- Link para editar y ver detalles, tambien para eliminar -->

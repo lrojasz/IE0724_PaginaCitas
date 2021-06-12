@@ -47,7 +47,8 @@
                                 </div>
                             </form>
                             <h4></h4>
-                            <h4>Cita: {{appointment}}</h4>
+                            <h4>{{appointment.user}}: {{appointment.day}} / {{appointment.month}} / {{appointment.hour}}</h4>
+                            <h4>{{appointment.description}}</h4>
                             <form method="POST" action="">
                                 {% csrf_token %}
                                 <div class="row">
