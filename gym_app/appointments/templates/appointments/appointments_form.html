@@ -5,3 +5,20 @@
     {{form.as_p}}
     <input type = "submit" value = "Submit">
 </form>
+
+{% comment %} <h1>Appointment Form:</h1>
+<a href="{% url 'appointments' %}"> Go Back</a>
+<form method="POST" action="">
+    {%if request.user.is_staff%}
+        <p> {{request.user}} </p>
+        {%csrf_token %}
+        {{form.as_p}}
+    {% else %}
+        <p> {{request.user}} </p>
+        {%csrf_token %}
+        {{form.day}}
+        {{form.month}}
+        {{form.hour}}
+    {% endif %}
+    <input type = "submit" value = "Submit">
+</form> {% endcomment %}

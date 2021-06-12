@@ -16,7 +16,7 @@
     </tr>
     {% for appointment in appointments %}
     <tr>
-        <th>{{appointment.day}},{{appointment.month}}, {{appointment.hour}}</th>
+        <th>{{appointment.day}},{{appointment.month}}, {{appointment.hour}}, {{appointment.user}}</th>
         <th><a href="{% url 'appointment' appointment.id %}">Ver Detalle</a></th>
         <!-- Link para editar y ver detalles, tambien para eliminar -->
         <th><a href="{% url 'appointment-update' appointment.id %}"> Editar</a></th>
