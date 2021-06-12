@@ -1,8 +1,8 @@
 # Construya esta imágen con:
-# docker build --tag ie-0724/paginacitas:0.1.2 .
+# docker build --tag ie-0724/paginacitas:0.1.4 .
 
 # Corra esta imágen con:
-# docker run -ti ie-0724/paginacitas:0.1.2
+# docker run -p 8000:8000 -ti ie-0724/paginacitas:0.1.4
 
 # Definimos OS base
 FROM ubuntu:20.04
@@ -38,6 +38,10 @@ COPY GimnasioIE0724 /usr/src/GimnasioIE0724
 #COPY include /usr/src/GimnasioIE0724/static
 #COPY manage.py /usr/src/CascoConvexo/manage.py
 #COPY db.sqlite3 /usr/src/CascoConvexo/db.sqlite3
+
+# Ir a la carpeta de gimnasio
+RUN cd /usr/src/GimnasioIE0724 \
+    && python3 manage.py makemigrations
 
 # Ir a la carpeta de gimnasio
 RUN cd /usr/src/GimnasioIE0724 \
