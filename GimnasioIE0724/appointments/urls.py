@@ -21,4 +21,5 @@ urlpatterns = [
     path('calendario/', views.calendar, name="calendar"),
     path('nosotros/', views.about_us, name="about_us"),
     path('galleria/', views.gallery, name="gallery"),
+    path('appointment/error', views.appointments_fail, name="appointments_fail"),
 ]

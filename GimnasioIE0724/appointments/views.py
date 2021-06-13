@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from appointments.models import Appointments
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views.generic.list import ListView #Importando la vista como lista
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView #Crear un appointment y modificar un appointment.
@@ -88,9 +88,21 @@ class AppointmentsCreate(LoginRequiredMixin, CreateView): #Estamos creando un da
     # Vamos a decirle al programa que solo el user que se encuentra puede crear para el mismo
     
     def form_valid(self, form):
-        if(self.request.user.is_staff):
+        # Obtener lista de citas, asumir que no hay choque
+        appointment_set = Appointments.objects.all()
+        choque = False
+        # Iterar por lista. Si existe cita con esa configuración, hay choque
+        for cita in appointment_set.iterator():
+            if (form.instance.month == cita.month) and (form.instance.day == cita.day) and (form.instance.hour == cita.hour):
+                choque = True
+        # Si hay choque, redirigir a página de choque
+        if (choque):
+            return redirect('appointments_fail')
+        # No hay choque, es de staff
+        elif(self.request.user.is_staff):
             #form.instance.user = self.request.user
             return super(AppointmentsCreate, self).form_valid(form)
+        # No hay choque, es usuario normal
         else:
             form.instance.user = self.request.user
             return super(AppointmentsCreate, self).form_valid(form) 
@@ -137,3 +149,7 @@ def about_us(request):
 # Página de galeria
 def gallery(request):
     return render(request,'webpage/gallery.html',{})
+
+# Página de galeria
+def appointments_fail(request):
+    return render(request,'appointments/appointment_fail.html',{})
