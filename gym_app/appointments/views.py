@@ -83,7 +83,7 @@ class AppointmentsCreate(LoginRequiredMixin, CreateView): #Estamos creando un da
     #Va a buscar un _form.html
     model = Appointments #Utiliza este modelos
     #El create view por default da un model form para UTILIZAR, va a crear un FORM con el modelo
-    fields = ['day', 'month', 'hour', 'description','user']
+    fields = ['user','day', 'month', 'hour', 'description']
 
     #Si todo va bien redirija al usuario a donde ve todos sus appointments, send user back a ese url
     success_url = reverse_lazy('appointments')
@@ -91,9 +91,14 @@ class AppointmentsCreate(LoginRequiredMixin, CreateView): #Estamos creando un da
     
     # Vamos a decirle al programa que solo el user que se encuentra puede crear para el mismo
     
-    def form_valid(self, form):
-        form.instance.user = self.request.user
+def form_valid(self, form):
+    if(self.request.user.is_staff):
+        #form.instance.user = self.request.user
         return super(AppointmentsCreate, self).form_valid(form)
+    else:
+        form.instance.user = self.request.user
+        return super(AppointmentsCreate, self).form_valid(form) 
+    # Si quiero realizar el cambio en _form, comento la funcion form_valid
     # Si quiero realizar el cambio en _form, comento la funcion form_valid
 
 
