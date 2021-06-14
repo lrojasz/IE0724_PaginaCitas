@@ -1,7 +1,0 @@
-<!-- Vamos a utilizar un form para enviar el POST request, recibe el contextname -->
-<a href="{% url 'appointments' %}"> Go Back</a>
-<form method="POST"> 
-    {% csrf_token %}
-    <p>Are you sure yo want to delete this appointment? {{appointment}}</p>
-    <input type = "submit" value= "Delete"/>
-</form>
