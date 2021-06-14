@@ -12,3 +12,12 @@ Para inicializar y correr la imágen de Docker, se debe utilizar lo siguiente:
 Para correr el servidor, solo se tiene permitido como host la dirección 0.0.0.0:8000. Por lo tanto, se utiliza la siguiente instrucción: 
 
 ``python3 manage.py runserver 0.0.0.0:8000 ``
+
+## Usuarios
+Entre los usuarios pre-configurados para este proyecto se encuentran:
+
+``Usuario: admin, Clave: admin``
+``Usuario: john, Clave: clave1234``
+``Usuario: testuser, Clave: clave1234``
+
+Importante: Solo los usuarios staff pueden acceder al administrador de DJANGO.
